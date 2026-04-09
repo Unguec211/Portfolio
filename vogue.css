@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.why{
+    text-align: center;
+    padding: 50px 20px;
+}
+.why h1{
+    text-align: center;
+    font-size: 28px;
+    font-weight: 900;
+    margin-bottom: 40px;
+}
+.why p{
+    color: black;
+    font-style: italic;
+
+}
+.features{
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+}
+.feature{
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: black;
+    font-weight: 500;
+}
+.reserve{
+    padding: 40px 20px;
+}
+.reserve h2{
+    position: relative;
+    text-align: center;
+    top: -50px;
+    font-size: 24px;
+}
+.reserve-container{
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    justify-content: center;
+}
+.image img{
+    position: absolute;
+    left: 0;
+   width: auto;
+   height: 250px;
+   border-radius: 50px;
+  
+}
