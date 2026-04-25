@@ -1,40 +1,90 @@
-// Select elements
-const addToCartButtons = document.querySelectorAll(".add-to-cart");
-const cartItems = document.getElementById("cartItems");
-const totalPrice = document.getElementById("totalPrice");
+// ==========================
+// NAVIGATION SCROLL
+// ==========================
+document.getElementById("homeLink").addEventListener("click", function(e) {
+    e.preventDefault();
+    document.getElementById("homeSection").scrollIntoView({ behavior: "smooth" });
+});
 
-let total = 0;
+document.getElementById("aboutLink").addEventListener("click", function(e) {
+    e.preventDefault();
+    document.getElementById("aboutSection").scrollIntoView({ behavior: "smooth" });
+});
 
-// Add to cart
-addToCartButtons.forEach(button => {
-    button.addEventListener("click", () => {
-        const name = button.getAttribute("data-name");
-        const price = parseInt(button.getAttribute("data-price"));
+document.getElementById("menuLink").addEventListener("click", function(e) {
+    e.preventDefault();
+    document.getElementById("menuSection").scrollIntoView({ behavior: "smooth" });
+});
 
-        // Create list item
-        const li = document.createElement("li");
-        li.textContent = `${name} - ${price} UGX`;
-        cartItems.appendChild(li);
+document.getElementById("contactLink").addEventListener("click", function(e) {
+    e.preventDefault();
+    document.getElementById("contactSection").scrollIntoView({ behavior: "smooth" });
+});
 
-        // Update total
-        total += price;
-        totalPrice.textContent = total;
+
+// ==========================
+// BUTTON ACTIONS
+// ==========================
+
+// Book Now
+document.getElementById("bookBtn").addEventListener("click", function() {
+    alert("Redirecting to reservation section...");
+    document.getElementById("contactSection").scrollIntoView({ behavior: "smooth" });
+});
+
+// Order Now
+document.getElementById("orderBtn").addEventListener("click", function() {
+    alert("Check out our popular dishes!");
+    document.getElementById("menuSection").scrollIntoView({ behavior: "smooth" });
+});
+
+// View Menu
+document.getElementById("viewMenuBtn").addEventListener("click", function() {
+    document.getElementById("menuSection").scrollIntoView({ behavior: "smooth" });
+});
+
+
+// ==========================
+// ADD TO CART FUNCTIONALITY
+// ==========================
+let cart = [];
+
+document.querySelectorAll(".addToCartBtn").forEach((button, index) => {
+    button.addEventListener("click", function() {
+        let card = button.closest(".card");
+        let itemName = card.querySelector("h3").innerText;
+        let price = card.querySelector(".price").innerText;
+
+        cart.push({ itemName, price });
+
+        alert(itemName + " added to cart 🛒");
+        console.log(cart);
     });
 });
 
-// Book Now button
-document.getElementById("bookBtn").addEventListener("click", () => {
-    alert("Table booking coming soon!");
+
+// ==========================
+// FORM SUBMISSION
+// ==========================
+document.getElementById("reservationForm").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    alert("Table reserved successfully! 🍽️");
+
+    this.reset();
 });
 
-// Order Now button
-document.getElementById("orderBtn").addEventListener("click", () => {
-    alert("Ordering feature coming soon!");
-});
 
-// View Menu scroll
-document.getElementById("viewMenuBtn").addEventListener("click", () => {
-    document.querySelector(".menu").scrollIntoView({
-        behavior: "smooth"
+// ==========================
+// SIMPLE HOVER EFFECT (JS BONUS)
+// ==========================
+document.querySelectorAll(".card").forEach(card => {
+    card.addEventListener("mouseenter", () => {
+        card.style.transform = "scale(1.05)";
+        card.style.transition = "0.3s";
+    });
+
+    card.addEventListener("mouseleave", () => {
+        card.style.transform = "scale(1)";
     });
 });
